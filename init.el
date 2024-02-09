@@ -6,18 +6,6 @@
                          ("org"   . "https://orgmode.org/elpa/")
                          ("elpa"  . "https://elpa.gnu.org/packages/")))
 
-;; myPackages contains a list of package names
-(defvar myPackages
-  '(material-theme                  ;; Theme
-    flycheck
-    neotree
-    elpy
-    blacken
-    ein
-    )
-  )
-
-;;(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 ;; Inicialização do sistema de pacotes
 (package-initialize)
 (unless package-archive-contents
@@ -30,47 +18,120 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; If the package listed is not already installed, install it
-(mapc #'(lambda (package)
-          (unless (package-installed-p package)
-            (package-install package)))
-      myPackages)
+(setq inhibit-startup-message t)
 
-(setq inhibit-startup-message t)    ;; Hide the startup message
+;; Instalando Icons
+(use-package all-the-icons
+  :ensure t
+  :if (display-graphic-p))
 
-;;(setq neo-theme (if (display-graphic-p) 'arrow))
-;; Carregando tema material
-(load-theme 'material t)
+(use-package all-the-icons-dired
+  :hook (dired-mode . (lambda () (all-the-icons-dired-mode t))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("fd1fea4311568a0da48c2e05d1efbb07d31ea625eedb289249156a0d9a115c8f" default))
+ '(package-selected-packages
+   '(auto-package-update neotree elpy projectile dashboard rainbow-mode doom-themes all-the-icons-dired all-the-icons use-package)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
-;; Ativando elpy
+;; Desativando Menu
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+;; Numero nas linha
+(global-display-line-numbers-mode 1)
+(global-visual-line-mode t)
+
+;; Meu Theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(add-to-list 'default-frame-alist '(alpha-background . 100))
+(use-package doom-themes
+  :config
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+      doom-themes-enable-italic t)) ; if nil, italics is universally disabled
+
+(use-package transwin)
+
+(load-theme 'lipe t)
+
+;; Rainbow Mode
+(use-package rainbow-mode
+  :hook org-mode prog-mode)
+
+;; Projectile
+(use-package projectile
+  :config
+  (projectile-mode 1))
+
+;; DASHBOARD - Tela Inicial
+(use-package dashboard
+  :ensure t 
+  :init
+  (setq initial-buffer-choice 'dashboard-open)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-banner-logo-title "Emacs Is More Than A Text Editor!")
+  ;;(setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
+  (setq dashboard-startup-banner "~/.emacs.d/logo/LFroes.png")  ;; use custom image as banner
+  (setq dashboard-center-content nil) ;; set to 't' for centered content
+  (setq dashboard-items '((recents . 5)
+                          (agenda . 5 )
+                          (bookmarks . 3)
+                          (projects . 3)
+                          (registers . 3)))
+  :custom 
+  (dashboard-modify-heading-icons '((recents . "file-text")
+				    (bookmarks . "book")))
+  :config
+  (dashboard-setup-startup-hook))
+
+;; Suporte para o python
+(use-package elpy)
 (elpy-enable)
 
-;;Setando bind f8 para neotree
-(global-set-key [f8] 'neotree-toggle)
-(global-set-key [f7] 'pyvenv-activate)
-(global-set-key [f6] 'pyvenv-deactivate)
-;;(global-set-key (kbd "C-c s") 'shell)
+;; Ativa Flycheck para correção tempo real elpy
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-(defun my-shell-below ()
-  "Abre um buffer de shell na parte inferior."
-  (interactive)
-  (split-window-below)
-  (other-window 2)
-  (shell))
+; Tree folders lateral
+(use-package neotree)
+(setq neo-theme (if (display-graphic-p) 'icons))
 
-(global-set-key (kbd "C-c s") 'my-shell-below)
+;; Linha em highlight
+(global-hl-line-mode t)
 
-;; Use IPython for REPL
+;; Salva files de backup em outra pasta
+(setq backup-directory-alist `(("." . "~/.saves")))
+
+;; Alerta visual e não com som
+(setq visible-bell t)
+
+;; Rolagem mais suave
+(setq mouse-wheel-scroll-amount '(2 ((shift) . 1))
+      mouse-wheel-progressive-speed nil
+      mouse-wheel-follow-mouse 't
+      scroll-step 1)
+
+(global-set-key [f6] 'transwin-toggle)
+(global-set-key [f7] 'neotree-toggle)
+
+;; Jupyter Notebook + Ipython
 (setq python-shell-interpreter "jupyter"
       python-shell-interpreter-args "console --simple-prompt"
       python-shell-prompt-detect-failure-warning nil)
 (add-to-list 'python-shell-completion-native-disabled-interpreters
              "jupyter")
-
-;; Enable Flycheck
-(when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 ;; Instalação do auto-update
 (use-package auto-package-update
@@ -82,30 +143,6 @@
   (auto-package-update-maybe)
   (auto-package-update-at-time "21:00"))
 
-; Exibe numeração de linhas
-(global-display-line-numbers-mode t)
 
-;; linha colorida
-(global-hl-line-mode t)
 
-;; Rolagem mais suave
-(setq mouse-wheel-scroll-amount '(2 ((shift) . 1))
-      mouse-wheel-progressive-speed nil
-      mouse-wheel-follow-mouse 't
-      scroll-step 1)
 
-; Inibe Ctrl-Z (suspend frame)
-(global-unset-key (kbd "C-z"))
-
-;; alerta visual
-(setq visible-bell t)
-
-;; (tool-bar-mode   -1)                 ; Oculta a barra de ferramentas
-;; (menu-bar-mode   -1)                 ; Oculta a barra de menu
-;; (tooltip-mode -1)
-(require 'clipetty)
-(global-clipetty-mode)
-
-;; Organizando os backups
-(setq backup-directory-alist `(("." . "~/.saves")))
-(setq x-select-enable-clipboard t)
