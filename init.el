@@ -1,3 +1,4 @@
+
 ;; Verifica e inicia o package.el
 (require 'package)
 
@@ -307,6 +308,11 @@
 (use-package ace-window
   :ensure t
   :bind (("C-z <right>" . ace-window ))
+  )
+
+
+(use-package magit
+  :ensure t
   )
 
 ;; Instalação do auto-update
