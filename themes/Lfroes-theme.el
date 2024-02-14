@@ -1,8 +1,8 @@
-;;; lipe-theme.el --- Theme
+;;; Lfroes-theme.el --- Theme
 
-;; Copyright (C) 2024 , ludson_froes
+;; Copyright (C) 2024 , Ludson Froes
 
-;; Author: ludson_froes
+;; Author: Ludson Froes
 ;; Version: 0.1
 ;; Package-Requires: ((emacs "24.1"))
 ;; Created with ThemeCreator, https://github.com/mswift42/themecreator.
@@ -23,35 +23,35 @@
 ;; This file is not part of Emacs.
 
 ;;; Commentary:
-;;; lipe theme created by ludson_froes in 2024
-;; d4d4d4
+;;; Lfroes theme created by Ludson Froes in 2024
+
 ;;; Code:
 
-(deftheme lipe)
+(deftheme Lfroes)
 (let ((class '((class color) (min-colors 89)))
-      (fg1 "#c7c7c7")
-      (fg2 "#b7b7b7")
-      (fg3 "#a7a7a7")
-      (fg4 "#979797")
-      (fg6 "#d4d4d4") 
+      (fg1 "#c9c5c5")
+      (fg2 "#b9b5b5")
+      (fg3 "#a9a5a5")
+      (fg4 "#999696")
+      (fg6 "#d6d3d3")
       (bg1 "#242438")
-      (bg2 "#3f3f3f")
-      (bg3 "#4f4f4f")
-      (bg4 "#606060")
-      (builtin "#f05656")
-      (keyword "#41cb95")
-      (const   "#a2b3c4")
+      (bg2 "#363648")
+      (bg3 "#474758")
+      (bg4 "#595968")
+      (builtin "#00d2ff")
+      (keyword "#46c874")
+      (const   "#89d06d")
       (comment "#aeaeae")
-      (func    "#cf9bde")
-      (str     "#9bc2ef")
-      (type    "#a645e7")
-      (var     "#f0ca40")
+      (func    "#ff95e3")
+      (str     "#a1b8ff")
+      (type    "#e9b750")
+      (var     "#e5c48a")
       (selection "#545454")
-      (warning   "#e60050")
-      (warning2  "#ff2370")
+      (warning   "#ff0000")
+      (warning2  "#ff8800")
       (unspec   (when (>= emacs-major-version 29) 'unspecified)))
   (custom-theme-set-faces
-   'lipe
+   'Lfroes
    `(default ((,class (:background ,bg1 :foreground ,fg1))))
    `(font-lock-builtin-face ((,class (:foreground ,builtin))))
    `(font-lock-comment-face ((,class (:foreground ,comment))))
@@ -247,23 +247,23 @@
    ;; Legacy
    (if (< emacs-major-version 22)
        (custom-theme-set-faces
-        'lipe
+        'Lfroes
         `(show-paren-match-face ((,class (:background ,warning))))) ;; obsoleted in 22.1, removed 2016
      (custom-theme-set-faces
-      'lipe
+      'Lfroes
       `(show-paren-match ((,class (:foreground ,bg1 :background ,str))))
       `(show-paren-mismatch ((,class (:foreground ,bg1 :background ,warning))))))
    ;; emacs >= 26.1
    (when (>= emacs-major-version 26)
      (custom-theme-set-faces
-      'lipe
+      'Lfroes
       `(line-number ((t (:inherit fringe))))
       `(line-number-current-line ((t (:inherit fringe :foreground ,fg6 :weight bold))))))
 
   ;; emacs >= 27.1
   (when (>= emacs-major-version 27)
     (custom-theme-set-faces
-     'lipe
+     'Lfroes
      `(tab-line              ((,class (:background ,bg2 :foreground ,fg4))))
      `(tab-line-tab          ((,class (:inherit tab-line))))
      `(tab-line-tab-inactive ((,class (:background ,bg2 :foreground ,fg4))))
@@ -271,13 +271,13 @@
      `(tab-line-highlight    ((,class (:background ,bg1 :foreground ,fg2))))))
  (when (>= emacs-major-version 28)
     (custom-theme-set-faces
-     'lipe
+     'Lfroes
      `(line-number ((t (:inherit fringe))))
      `(line-number-current-line ((t (:inherit fringe :foreground ,fg6 :weight bold))))))
 ;; emacs >= 27.1
 (when (>= emacs-major-version 27)
   (custom-theme-set-faces
-   'lipe
+   'Lfroes
    `(tab-line              ((,class (:background ,bg2 :foreground ,fg4))))
    `(tab-line-tab          ((,class (:inherit tab-line))))
    `(tab-line-tab-inactive ((,class (:background ,bg2 :foreground ,fg4))))
@@ -285,11 +285,11 @@
    `(tab-line-highlight    ((,class (:background ,bg1 :foreground ,fg2))))))
  (when (>= emacs-major-version 28)
     (custom-theme-set-faces
-     'lipe
+     'Lfroes
      `(tab-line-tab-modified ((,class (:foreground ,warning2 :weight bold))))))
   (when (boundp 'font-lock-regexp-face)
     (custom-theme-set-faces
-    'lipe
+    'Lfroes
     `(font-lock-regexp-face ((,class (:inherit font-lock-string-face :underline t)))))))
 
 ;;;###autoload
@@ -297,10 +297,10 @@
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'lipe)
+(provide-theme 'Lfroes)
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
 
-;;; lipe-theme.el ends here
+;;; Lfroes-theme.el ends here
