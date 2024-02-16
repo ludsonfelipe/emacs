@@ -1,4 +1,3 @@
-
 ;; Verifica e inicia o package.el
 (require 'package)
 
@@ -227,6 +226,7 @@
 (global-set-key (kbd "C-z a") 'pyvenv-activate) ;; Ativa env
 (global-set-key (kbd "C-z b") 'pyvenv-create) ;; Cria env
 (global-set-key (kbd "C-z k") 'pyvenv-workon) ;; Workon 
+(global-set-key (kbd "C-z f") 'mark-whole-buffer) ;; select all
 
 ;; Cursor
 (global-set-key (kbd "M-s M-a") 'mc/mark-next-word-like-this) ;; Marca word exata
@@ -253,8 +253,7 @@
   :config
   (setq elfeed-search-feed-face ":foreground #ffffff :weight bold"
         elfeed-feeds (quote
-                       (("https://www.reddit.com/r/dataengineering.rss" reddit data_engineer)
-                        ("https://www.reddit.com/r/emacs.rss" reddit emacs)
+                       (("https://www.reddit.com/r/dataengineering.rss" reddit data_engineer)         ("https://www.reddit.com/r/emacs.rss" reddit emacs)
 			("https://www.reddit.com/r/Python.rss" reddit python)
 		       	("https://www.reddit.com/r/scala.rss" reddit scala)
 			("https://www.reddit.com/r/SQL.rss" reddit sql)
@@ -285,6 +284,7 @@
 
 (use-package company-quickhelp)
 
+;; Docker
 (use-package docker-compose-mode)
 (use-package docker
   :ensure t
@@ -314,6 +314,17 @@
 (use-package magit
   :ensure t
   )
+
+;; Ative o tab-line mode
+(global-tab-line-mode)
+(setq tab-line-height 24)
+(setq tab-line-separator " ")
+(set-face-attribute 'tab-line-tab-current nil
+                    :background "gray"
+                    :foreground "blue"
+                    :box '(:line-width 1 :color "white"))
+(setq tab-line-tab-width 20)
+(setq tab-line-close-button-show nil)
 
 ;; Instalação do auto-update
 (use-package auto-package-update
