@@ -1,3 +1,4 @@
+
 ;; Verifica e inicia o package.el
 (require 'package)
 
@@ -227,6 +228,7 @@
 (global-set-key (kbd "C-z b") 'pyvenv-create) ;; Cria env
 (global-set-key (kbd "C-z k") 'pyvenv-workon) ;; Workon 
 (global-set-key (kbd "C-z f") 'mark-whole-buffer) ;; select all
+(global-set-key (kbd "C-z g") 'eww-list-bookmarks) ;; list bookmarks 
 
 ;; Cursor
 (global-set-key (kbd "M-s M-a") 'mc/mark-next-word-like-this) ;; Marca word exata
@@ -309,7 +311,6 @@
   :ensure t
   :bind (("C-z <right>" . ace-window ))
   )
-
 
 (use-package magit
   :ensure t
