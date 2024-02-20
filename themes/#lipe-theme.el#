@@ -24,7 +24,6 @@
 
 ;;; Commentary:
 ;;; lipe theme created by ludson_froes in 2024
-;; d4d4d4
 ;;; Code:
 
 (deftheme lipe)

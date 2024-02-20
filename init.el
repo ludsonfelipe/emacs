@@ -1,4 +1,3 @@
-
 ;; Verifica e inicia o package.el
 (require 'package)
 
@@ -37,34 +36,34 @@
   :ensure t
   :config (which-key-mode))
 
-;; Gerenciador de arquivos
-(use-package peep-dired)
+;; ;; Gerenciador de arquivos
+;; (use-package peep-dired)
 
-(use-package dired-rainbow
-  :ensure t
-  :config
-  (progn
-    (dired-rainbow-define-chmod directory "#6cb2eb" "d.*")
-    (dired-rainbow-define html "#eb5286" ("css" "less" "sass" "scss" "htm" "html" "jhtm" "mht" "eml" "mustache" "xhtml"))
-    (dired-rainbow-define xml "#f2d024" ("xml" "xsd" "xsl" "xslt" "wsdl" "bib" "json" "msg" "pgn" "rss" "yaml" "yml" "rdata"))
-    (dired-rainbow-define document "#9561e2" ("docm" "doc" "docx" "odb" "odt" "pdb" "pdf" "ps" "rtf" "djvu" "epub" "odp" "ppt" "pptx"))
-    (dired-rainbow-define markdown "#ffed4a" ("org" "etx" "info" "markdown" "md" "mkd" "nfo" "pod" "rst" "tex" "textfile" "txt"))
-    (dired-rainbow-define database "#6574cd" ("xlsx" "xls" "csv" "accdb" "db" "mdb" "sqlite" "nc"))
-    (dired-rainbow-define media "#de751f" ("mp3" "mp4" "MP3" "MP4" "avi" "mpeg" "mpg" "flv" "ogg" "mov" "mid" "midi" "wav" "aiff" "flac"))
-    (dired-rainbow-define image "#f66d9b" ("tiff" "tif" "cdr" "gif" "ico" "jpeg" "jpg" "png" "psd" "eps" "svg"))
-    (dired-rainbow-define log "#c17d11" ("log"))
-    (dired-rainbow-define shell "#f6993f" ("awk" "bash" "bat" "sed" "sh" "zsh" "vim"))
-    (dired-rainbow-define interpreted "#38c172" (".py" "ipynb" "rb" "pl" "t" "msql" "mysql" "pgsql" "sql" "r" "clj" "cljs" "scala" "js"))
-    (dired-rainbow-define compiled "#4dc0b5" ("asm" "cl" "lisp" "el" "c" "h" "c++" "h++" "hpp" "hxx" "m" "cc" "cs" "cp" "cpp" "go" "f" "for" "ftn" "f90" "f95" "f03" "f08" "s" "rs" "hi" "hs" "pyc" ".java"))
-    (dired-rainbow-define executable "#8cc4ff" ("exe" "msi"))
-    (dired-rainbow-define compressed "#51d88a" ("7z" "zip" "bz2" "tgz" "txz" "gz" "xz" "z" "Z" "jar" "war" "ear" "rar" "sar" "xpi" "apk" "xz" "tar"))
-    (dired-rainbow-define packaged "#faad63" ("deb" "rpm" "apk" "jad" "jar" "cab" "pak" "pk3" "vdf" "vpk" "bsp"))
-    (dired-rainbow-define encrypted "#ffed4a" ("gpg" "pgp" "asc" "bfe" "enc" "signature" "sig" "p12" "pem"))
-    (dired-rainbow-define fonts "#6cb2eb" ("afm" "fon" "fnt" "pfb" "pfm" "ttf" "otf"))
-    (dired-rainbow-define partition "#e3342f" ("dmg" "iso" "bin" "nrg" "qcow" "toast" "vcd" "vmdk" "bak"))
-    (dired-rainbow-define vc "#0074d9" ("git" "gitignore" "gitattributes" "gitmodules"))
-    (dired-rainbow-define-chmod executable-unix "#38c172" "-.*x.*")
-    )) 
+;; (use-package dired-rainbow
+;;   :ensure t
+;;   :config
+;;   (progn
+;;     (dired-rainbow-define-chmod directory "#6cb2eb" "d.*")
+;;     (dired-rainbow-define html "#eb5286" ("css" "less" "sass" "scss" "htm" "html" "jhtm" "mht" "eml" "mustache" "xhtml"))
+;;     (dired-rainbow-define xml "#f2d024" ("xml" "xsd" "xsl" "xslt" "wsdl" "bib" "json" "msg" "pgn" "rss" "yaml" "yml" "rdata"))
+;;     (dired-rainbow-define document "#9561e2" ("docm" "doc" "docx" "odb" "odt" "pdb" "pdf" "ps" "rtf" "djvu" "epub" "odp" "ppt" "pptx"))
+;;     (dired-rainbow-define markdown "#ffed4a" ("org" "etx" "info" "markdown" "md" "mkd" "nfo" "pod" "rst" "tex" "textfile" "txt"))
+;;     (dired-rainbow-define database "#6574cd" ("xlsx" "xls" "csv" "accdb" "db" "mdb" "sqlite" "nc"))
+;;     (dired-rainbow-define media "#de751f" ("mp3" "mp4" "MP3" "MP4" "avi" "mpeg" "mpg" "flv" "ogg" "mov" "mid" "midi" "wav" "aiff" "flac"))
+;;     (dired-rainbow-define image "#f66d9b" ("tiff" "tif" "cdr" "gif" "ico" "jpeg" "jpg" "png" "psd" "eps" "svg"))
+;;     (dired-rainbow-define log "#c17d11" ("log"))
+;;     (dired-rainbow-define shell "#f6993f" ("awk" "bash" "bat" "sed" "sh" "zsh" "vim"))
+;;     (dired-rainbow-define interpreted "#38c172" (".py" "ipynb" "rb" "pl" "t" "msql" "mysql" "pgsql" "sql" "r" "clj" "cljs" "scala" "js"))
+;;     (dired-rainbow-define compiled "#4dc0b5" ("asm" "cl" "lisp" "el" "c" "h" "c++" "h++" "hpp" "hxx" "m" "cc" "cs" "cp" "cpp" "go" "f" "for" "ftn" "f90" "f95" "f03" "f08" "s" "rs" "hi" "hs" "pyc" ".java"))
+;;     (dired-rainbow-define executable "#8cc4ff" ("exe" "msi"))
+;;     (dired-rainbow-define compressed "#51d88a" ("7z" "zip" "bz2" "tgz" "txz" "gz" "xz" "z" "Z" "jar" "war" "ear" "rar" "sar" "xpi" "apk" "xz" "tar"))
+;;     (dired-rainbow-define packaged "#faad63" ("deb" "rpm" "apk" "jad" "jar" "cab" "pak" "pk3" "vdf" "vpk" "bsp"))
+;;     (dired-rainbow-define encrypted "#ffed4a" ("gpg" "pgp" "asc" "bfe" "enc" "signature" "sig" "p12" "pem"))
+;;     (dired-rainbow-define fonts "#6cb2eb" ("afm" "fon" "fnt" "pfb" "pfm" "ttf" "otf"))
+;;     (dired-rainbow-define partition "#e3342f" ("dmg" "iso" "bin" "nrg" "qcow" "toast" "vcd" "vmdk" "bak"))
+;;     (dired-rainbow-define vc "#0074d9" ("git" "gitignore" "gitattributes" "gitmodules"))
+;;     (dired-rainbow-define-chmod executable-unix "#38c172" "-.*x.*")
+;;     )) 
 
 ;; Icons no modo dired
 (use-package all-the-icons-dired
@@ -82,10 +81,12 @@
 ;; Meu Theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (add-to-list 'default-frame-alist '(alpha-background . 100))
-(use-package doom-themes
-  :config
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-      doom-themes-enable-italic t)) ; if nil, italics is universally disabled
+
+;;;;doom-themes
+;; (use-package doom-themes
+;;   :config
+;;   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+;;       doom-themes-enable-italic t)) ; if nil, italics is universally disabled
 
 
 ;; THEME - Transparent
@@ -114,7 +115,7 @@
   (setq dashboard-center-content t) 
   (setq dashboard-items '((recents . 8)
                           (bookmarks . 3)
-                          (projects . 3)
+                          (projects . 5)
                           (registers . 3)))
   :custom 
   (dashboard-modify-heading-icons '((recents . "file-text")
@@ -125,6 +126,22 @@
 ;; Suporte para o python
 (use-package elpy)
 (elpy-enable)
+
+;; Jupyter Notebook + Ipython
+(use-package ein)
+;; ;; Use IPython for REPL
+;; (setq python-shell-interpreter "jupyter"
+;;        python-shell-interpreter-args "console --simple-prompt"
+;;        python-shell-prompt-detect-failure-warning nil
+;;        )
+;;(setq elpy-rpc-virtualenv-path 'current)
+
+;;(setq elpy-rpc-python-command ;;"C:/Users/lfroes/AppData/Roaming/.emacs.d/elpy/rpc-venv/Scripts/python.exe")
+;; (add-to-list 'python-shell-completion-native-disabled-interpreters
+;;  	     "jupyter")
+(setq python-indent-guess-indent-offset-verbose nil)
+
+ 
 
 ;; Ativa Flycheck para correção tempo real elpy
 (when (require 'flycheck nil t)
@@ -200,10 +217,10 @@
 (global-set-key (kbd "C-c d") 'dashboard-open)
 
 ;; CTRL + C Window Resize
-(global-set-key (kbd "C-c <left>") 'enlarge-window-horizontally)
-(global-set-key (kbd "C-c <right>") 'shrink-window-horizontally)
-(global-set-key (kbd "C-c <up>") 'enlarge-window)
-(global-set-key (kbd "C-c <down>") 'shrink-window)
+(global-set-key (kbd "C-c C-<left>") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-c C-<right>") 'shrink-window-horizontally)
+(global-set-key (kbd "C-c C-<up>") 'enlarge-window)
+(global-set-key (kbd "C-c C-<down>") 'shrink-window)
 
 ;; CTRL + Z  Cria, Sobe, Derruba Window
 (global-set-key (kbd "C-z <down>") 'delete-window)
@@ -213,8 +230,8 @@
 ;; Auxiliares
 (global-set-key (kbd "C-z i") 'indent-region) ;; Indentaçao
 (global-set-key (kbd "C-z ;") 'comment-dwim) ;; Criar comentário
-(global-set-key (kbd "C-z ,") 'beginning-of-line) ;; Começo Da Linha
-(global-set-key (kbd "C-z .") 'end-of-line) ;; Final da linha
+(global-set-key (kbd "C-,") 'beginning-of-line) ;; Começo Da Linha
+(global-set-key (kbd "C-.") 'end-of-line) ;; Final da linha
 (global-set-key (kbd "C-z v") 'xref-find-definitions) ;; Definição de uma variavel 
 (global-set-key (kbd "C-z l") 'elpy-shell-send-statement-and-step) ;; Código por linha
 (global-set-key (kbd "C-z #") 'elpy-shell-send-codecell-and-step) ;; Roda código por ##
@@ -224,11 +241,13 @@
 (global-set-key (kbd "C-z h") 'elpy-folding-toggle-at-point) ;; Esconde docs, funcões etc
 (global-set-key (kbd "C-z c") 'elpy-multiedit-python-symbol-at-point) ;; Troca variaveis
 (global-set-key (kbd "C-z j") 'elpy-refactor-rename) ;; Troca variaveis modo jedi
-(global-set-key (kbd "C-z a") 'pyvenv-activate) ;; Ativa env
+(global-set-key (kbd "C-z f") 'pyvenv-activate) ;; Ativa env
 (global-set-key (kbd "C-z b") 'pyvenv-create) ;; Cria env
 (global-set-key (kbd "C-z k") 'pyvenv-workon) ;; Workon 
-(global-set-key (kbd "C-z f") 'mark-whole-buffer) ;; select all
+(global-set-key (kbd "C-z a") 'mark-whole-buffer) ;; select all
 (global-set-key (kbd "C-z g") 'eww-list-bookmarks) ;; list bookmarks 
+(global-set-key (kbd "C-z C-w") 'browse-url-at-point) ;;browser url no local atual
+(global-set-key (kbd "C-z w") 'browse-url) ;;browser
 
 ;; Cursor
 (global-set-key (kbd "M-s M-a") 'mc/mark-next-word-like-this) ;; Marca word exata
@@ -240,15 +259,6 @@
 (global-set-key (kbd "M-s e") 'mc/edit-ends-of-lines) ;; End Of Line
 (global-set-key (kbd "M-s s") 'mc/edit-beginnings-of-lines) ;; Start Of Line
 
-
-;; Jupyter Notebook + Ipython
-(use-package ein)
-;; Use IPython for REPL
-(setq python-shell-interpreter "jupyter"
-      python-shell-interpreter-args "console --simple-prompt"
-      python-shell-prompt-detect-failure-warning nil)
-(add-to-list 'python-shell-completion-native-disabled-interpreters
-             "jupyter")
 
 ;; feed do reddit
 (use-package elfeed
@@ -267,9 +277,6 @@
   (elfeed-goodies/setup)
   :config
   (setq elfeed-goodies/entry-pane-size 0.5))
-
-;; Ative o company-mode globalmente
-(add-hook 'after-init-hook 'global-company-mode)
 
 ;; Instale e configure o company-terraform
 (use-package company-terraform
@@ -326,6 +333,10 @@
                     :box '(:line-width 1 :color "white"))
 (setq tab-line-tab-width 20)
 (setq tab-line-close-button-show nil)
+(setq tab-line-new-button-show nil)
+
+;; Ative o company-mode globalmente
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; Instalação do auto-update
 (use-package auto-package-update
@@ -337,11 +348,7 @@
   (auto-package-update-maybe)
   (auto-package-update-at-time "21:00"))
 
+(global-goto-address-mode 1)
+
 ;;(use-package sudo-edit)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(ace-window which-key transwin rainbow-mode py-autopep8 projectile peep-dired neotree multiple-cursors eshell-toggle eshell-syntax-highlighting elpy elfeed-goodies ein doom-themes doom-modeline docker-compose-mode docker dired-rainbow dashboard company-terraform company-quickhelp auto-package-update all-the-icons-dired)))
+
