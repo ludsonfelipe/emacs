@@ -16,6 +16,7 @@
   (package-install 'use-package))
 
 (require 'use-package)
+
 (setq use-package-always-ensure t)
 
 (setq inhibit-startup-message t)
@@ -197,6 +198,9 @@
   (eshell-toggle-init-eshell)
   :bind
   ("C-z s" . eshell-toggle))
+(defun new-eshell ()
+  (interactive)
+  (eshell "new"))
 
 (use-package eshell-syntax-highlighting
   :after esh-mode
@@ -215,6 +219,7 @@
 (global-set-key (kbd "C--") 'text-scale-decrease)
 (global-set-key (kbd "C-x f") 'elfeed)
 (global-set-key (kbd "C-c d") 'dashboard-open)
+(global-set-key (kbd "C-z C-s") 'new-eshell)
 
 ;; CTRL + C Window Resize
 (global-set-key (kbd "C-c C-<left>") 'enlarge-window-horizontally)
@@ -232,14 +237,14 @@
 (global-set-key (kbd "C-z ;") 'comment-dwim) ;; Criar comentário
 (global-set-key (kbd "C-,") 'beginning-of-line) ;; Começo Da Linha
 (global-set-key (kbd "C-.") 'end-of-line) ;; Final da linha
-(global-set-key (kbd "C-z v") 'xref-find-definitions) ;; Definição de uma variavel 
+(global-set-key (kbd "C-z c") 'xref-find-definitions) ;; Definição de uma variavel 
 (global-set-key (kbd "C-z l") 'elpy-shell-send-statement-and-step) ;; Código por linha
 (global-set-key (kbd "C-z #") 'elpy-shell-send-codecell-and-step) ;; Roda código por ##
 (global-set-key (kbd "C-z r") 'elpy-shell-send-region-or-buffer) ;; Roda código por reg
 (global-set-key (kbd "C-z e") 'elpy-flymake-next-error) ;; Check erros com flymake
 (global-set-key (kbd "C-z d") 'elpy-doc) ;; Check docs
 (global-set-key (kbd "C-z h") 'elpy-folding-toggle-at-point) ;; Esconde docs, funcões etc
-(global-set-key (kbd "C-z c") 'elpy-multiedit-python-symbol-at-point) ;; Troca variaveis
+(global-set-key (kbd "C-z v") 'elpy-multiedit-python-symbol-at-point) ;; Troca variaveis
 (global-set-key (kbd "C-z j") 'elpy-refactor-rename) ;; Troca variaveis modo jedi
 (global-set-key (kbd "C-z f") 'pyvenv-activate) ;; Ativa env
 (global-set-key (kbd "C-z b") 'pyvenv-create) ;; Cria env
@@ -295,6 +300,7 @@
 
 ;; Docker
 (use-package docker-compose-mode)
+(use-package dockerfile-mode)
 (use-package docker
   :ensure t
   :bind ("C-c C-d" . docker))
@@ -349,6 +355,8 @@
   (auto-package-update-at-time "21:00"))
 
 (global-goto-address-mode 1)
+(use-package poetry
+  :ensure t)
 
+(poetry-tracking-mode 1)
 ;;(use-package sudo-edit)
-
